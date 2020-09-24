@@ -159,6 +159,9 @@ class NanoAODSchema(BaseSchema):
         "FsrPhoton": "FsrPhoton",
         "Tau": "Tau",
         "GenVisTau": "GenVisTau",
+        "TriggerMuon" : "TriggerMuon",
+        "ProbeTracks" : "ProbeTracks",
+        "Bmeson" : "Bmeson",
         # special
         "GenPart": "GenParticle",
     }
@@ -371,6 +374,9 @@ class TreeMakerSchema(BaseSchema):
             "TAPMuonTracks",
             "TAPPionTracks",
             "Tracks",
+            "TriggerMuons",
+            "ProbeTrackss",
+            "Bmesons",
         ]
         for cname in collections:
             items = sorted(k for k in branch_forms if k.startswith(cname + "_"))

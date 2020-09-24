@@ -346,3 +346,51 @@ class MissingET(vector.PolarTwoVector, base.NanoCollection):
 
 
 _set_repr_name("MissingET")
+
+
+## MG
+@awkward1.mixin_class(behavior)
+class TriggerMuon(candidate.PtEtaPhiMCandidate, base.NanoCollection):
+    """NanoAOD muon object"""
+
+    @property
+    def matched_gen(self):
+        return self._events().GenPart._apply_global_index(self.genPartIdxG)
+
+_set_repr_name("TriggerMuon")
+
+
+@awkward1.mixin_class(behavior)
+class ProbeTracks(candidate.PtEtaPhiMCandidate, base.NanoCollection):
+    """NanoAOD muon object"""
+
+    @property
+    def matched_gen(self):
+        return self._events().GenPart._apply_global_index(self.genPartIdxG)
+
+_set_repr_name("ProbeTracks")
+
+
+@awkward1.mixin_class(behavior)
+class Bmeson(candidate.PtEtaPhiMCandidate, base.NanoCollection):
+    """NanoAOD B-meson object"""
+
+    #@property
+    #def matched_gen(self):
+    #    return self._events().GenPart._apply_global_index(self.genPartIdxG)
+    # not yet defined
+
+    @property
+    def matched_muon(self):
+        return self._events().Muon._apply_global_index(self.muonIdxG)
+
+    @property
+    def matched_triggerMuon(self):
+        return self._events().TriggerMuon._apply_global_index(self.triggerMuonIdxG)
+    
+    @property
+    def matched_probeTracks(self):
+        return self._events().ProbeTracks._apply_global_index(self.probeTracksIdxG)
+
+_set_repr_name("Bmeson")
+
